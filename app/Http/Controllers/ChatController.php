@@ -11,16 +11,25 @@ class ChatController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function chat()
     {
         return view('chat');
     }
 
-    public function send(Request $request)
+    // public function send(Request $request)
+    // {
+    //     $user = auth()->user();
+
+    //     event(new ChatEvent($request->message, $user));
+    // }
+
+    public function send()
     {
         $user = auth()->user();
 
-        event(new ChatEvent($request->message, $user));
+        $message = 'hello';
+
+        event(new ChatEvent($message, $user));
     }
 }
